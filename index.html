@@ -62,14 +62,17 @@
   <h2>Preset list: Mac tool (MidiTXPresets.json)</h2>
   <p>Use this tool on a <strong>Mac</strong> (with TONEX connected via USB) to create <strong>MidiTXPresets.json</strong>. You can then import the file in the app on <strong>Android or iOS</strong> (tap <strong>Import preset list</strong> and select the file). On iPhone/iPad this is the only way to load preset names; on Android it is an alternative to USB sync.</p>
 
+  <h3>Download extract_presets_mac</h3>
   <div class="download-box">
-    <strong>Download (Mac)</strong><br>
-    <a href="extract_presets_mac" download="extract_presets_mac">extract_presets_mac</a> — compiled for macOS on <strong>Apple Silicon (M-chips)</strong>. Not compatible with Intel Macs. No installation required.
+    <strong>Download link</strong><br>
+    <a href="extract_presets_mac" download="extract_presets_mac">Download extract_presets_mac</a><br>
+    <span style="font-size: 0.9rem; color: #555;">URL: <a href="https://mario83.github.io/miditx-editor/extract_presets_mac">https://mario83.github.io/miditx-editor/extract_presets_mac</a></span>
+    <p style="margin: 0.75em 0 0; font-size: 0.95rem;">Binary for macOS <strong>Apple Silicon (M1/M2/M3)</strong>. Not compatible with Intel. No installation required.</p>
   </div>
 
-  <p><strong>Steps:</strong></p>
+  <p><strong>How to use:</strong></p>
   <ol>
-    <li>Download the file above and put it in a folder (e.g. Desktop).</li>
+    <li>Download the file from the link above and save it to a folder (e.g. Desktop).</li>
     <li>Connect the TONEX Pedal to your Mac via USB.</li>
     <li>Open Terminal, go to that folder (e.g. <code>cd ~/Desktop</code>).</li>
     <li>Make it executable and run: <code>chmod +x extract_presets_mac && ./extract_presets_mac</code></li>
@@ -77,7 +80,7 @@
     <li>Transfer MidiTXPresets.json to your phone (AirDrop, Mail, cloud storage, USB, or Files app).</li>
     <li>In MidiTX Editor, tap <strong>Import preset list (MidiTXPresets.json)</strong> and select the file.</li>
   </ol>
-  <p>Optional: use <code>./extract_presets_mac -o myfile.json</code> to save under a different name or path.</p>
+  <p>Optional: <code>./extract_presets_mac -o myfile.json</code> to save under a different name or path.</p>
 
   <h2>Requirements</h2>
   <ul>
