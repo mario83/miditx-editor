@@ -8,6 +8,7 @@
     body { font-family: system-ui, -apple-system, sans-serif; max-width: 720px; margin: 0 auto; padding: 24px; line-height: 1.6; color: #333; }
     h1 { font-size: 1.5rem; margin-top: 0; }
     h2 { font-size: 1.15rem; margin-top: 1.5em; }
+    h3 { font-size: 1rem; margin-top: 1.2em; color: #555; }
     p { margin: 0.6em 0; }
     ul { margin: 0.5em 0; padding-left: 1.4em; }
     li { margin: 0.25em 0; }
@@ -16,16 +17,19 @@
     .step strong { display: block; margin-bottom: 0.2em; }
     a { color: #1a1a2e; }
     .footer { margin-top: 2em; padding-top: 1em; border-top: 1px solid #ddd; font-size: 0.9rem; color: #666; }
+    .download-box { background: #f5f5f5; padding: 12px 16px; border-radius: 8px; margin: 0.75em 0; }
+    .download-box a { font-weight: 600; }
+    code { background: #eee; padding: 1px 6px; border-radius: 4px; font-size: 0.9em; }
   </style>
 </head>
 <body>
   <h1>MidiTX Editor</h1>
-  <p class="tagline">MIDI editor for IK Multimedia TONEX Pedal. Control your pedal from your Android phone via Bluetooth or USB.</p>
+  <p class="tagline">MIDI editor for IK Multimedia TONEX Pedal. Control your pedal from your phone via Bluetooth (Android &amp; iOS). Preset names: USB sync (Android) or import MidiTXPresets.json from a Mac (Android &amp; iOS).</p>
 
   <h2>What it does</h2>
-  <p>Midi TX Editor lets you control the TONEX Pedal directly from your phone—no need to bend down to the unit during rehearsals or on stage. You can:</p>
+  <p>MidiTX Editor lets you control the TONEX Pedal from your phone—no need to bend down to the unit during rehearsals or on stage. You can:</p>
   <ul>
-    <li><strong>Sync preset names and settings via USB</strong> (OTG cable): load all 150 preset names and configurations from the pedal so they appear in the app.</li>
+    <li><strong>Load preset names and settings</strong> so they appear in the app: on <strong>Android</strong> via USB sync (OTG cable) or by importing a file from a Mac; on <strong>iPhone/iPad</strong> by importing a file created on a Mac (see below). Both platforms support the same <strong>MidiTXPresets.json</strong> import.</li>
     <li><strong>Control the pedal via Bluetooth</strong> using a BLE MIDI adapter (e.g. midiA m-vave, M-VAVE MS1, or any compatible BLE MIDI dongle).</li>
     <li><strong>Switch presets</strong> (bank A/B/C) and <strong>edit parameters</strong> (amp, gate, comp, EQ, mod, delay, reverb) from the editor.</li>
     <li><strong>Save changes</strong> to the current preset and update the local cache so the app stays in sync.</li>
@@ -33,9 +37,16 @@
 
   <h2>How to use the app</h2>
 
+  <h3>Android</h3>
   <div class="step">
-    <strong>1. (Optional) USB sync</strong>
-    When you open the app, you can choose <strong>Start sync</strong> to sync preset names and configs from the TONEX Pedal. Connect the pedal to your phone with an <strong>OTG cable</strong>, select the device, and wait for the sync to finish. This way the editor will show preset names and let you load/save configurations. If you skip this, you can still control the pedal via Bluetooth; preset slots will appear as numbers.
+    <strong>1. (Optional) Preset names</strong>
+    You can sync preset names from the TONEX Pedal via <strong>USB</strong> (OTG cable): open the app, choose <strong>Start sync</strong>, connect the pedal, and wait for the sync to finish. Alternatively, you can <strong>import a preset list file</strong> (MidiTXPresets.json) created on a Mac using the tool below—tap <strong>Import preset list</strong> in the app and select the file. If you skip both, you can still control the pedal via Bluetooth; preset slots will appear as numbers.
+  </div>
+
+  <h3>iPhone / iPad</h3>
+  <div class="step">
+    <strong>1. (Optional) Import preset list</strong>
+    USB sync is not available on iOS. To have preset names in the editor, create a <strong>MidiTXPresets.json</strong> file on a Mac using the tool below, transfer it to your iPhone (AirDrop, Mail, iCloud Drive, etc.), then in the app tap <strong>Import preset list</strong> and select the file. If you skip this, you can still control the pedal via Bluetooth; preset slots will appear as numbers.
   </div>
 
   <div class="step">
@@ -45,15 +56,35 @@
 
   <div class="step">
     <strong>3. Use the editor</strong>
-    After connecting, the editor opens. At the top you see the current preset (name if synced, or slot index) and the bank (00–49) with three buttons (A, B, C). Tap a preset to switch it on the pedal. Use the <strong>Save</strong> button on the preset bar to save the current settings to the pedal and update the local cache. The tabs below let you adjust amp, gate, comp, EQ, modulation, delay, and reverb; changes are sent to the pedal in real time via MIDI.
+    After connecting, the editor opens. At the top you see the current preset (name if loaded, or slot index) and the bank (00–49) with three buttons (A, B, C). Tap a preset to switch it on the pedal. Use the <strong>Save</strong> button on the preset bar to save the current settings to the pedal and update the local cache. The tabs below let you adjust amp, gate, comp, EQ, modulation, delay, and reverb; changes are sent to the pedal in real time via MIDI.
   </div>
+
+  <h2>Preset list: Mac tool (MidiTXPresets.json)</h2>
+  <p>Use this tool on a <strong>Mac</strong> (with TONEX connected via USB) to create <strong>MidiTXPresets.json</strong>. You can then import the file in the app on <strong>Android or iOS</strong> (tap <strong>Import preset list</strong> and select the file). On iPhone/iPad this is the only way to load preset names; on Android it is an alternative to USB sync.</p>
+
+  <div class="download-box">
+    <strong>Download (Mac)</strong><br>
+    <a href="extract_presets_mac" download="extract_presets_mac">extract_presets_mac</a> — compiled for macOS on <strong>Apple Silicon (M-chips)</strong>. Not compatible with Intel Macs. No installation required.
+  </div>
+
+  <p><strong>Steps:</strong></p>
+  <ol>
+    <li>Download the file above and put it in a folder (e.g. Desktop).</li>
+    <li>Connect the TONEX Pedal to your Mac via USB.</li>
+    <li>Open Terminal, go to that folder (e.g. <code>cd ~/Desktop</code>).</li>
+    <li>Make it executable and run: <code>chmod +x extract_presets_mac && ./extract_presets_mac</code></li>
+    <li>The tool creates <strong>MidiTXPresets.json</strong> in the current folder.</li>
+    <li>Transfer MidiTXPresets.json to your phone (AirDrop, Mail, cloud storage, USB, or Files app).</li>
+    <li>In MidiTX Editor, tap <strong>Import preset list (MidiTXPresets.json)</strong> and select the file.</li>
+  </ol>
+  <p>Optional: use <code>./extract_presets_mac -o myfile.json</code> to save under a different name or path.</p>
 
   <h2>Requirements</h2>
   <ul>
-    <li>Android 6.0 or higher</li>
+    <li><strong>Android:</strong> Android 6.0 or higher. For USB sync: OTG cable and USB host support. Preset names can also be loaded by importing MidiTXPresets.json (Mac tool above).</li>
+    <li><strong>iOS:</strong> iPhone or iPad with iOS 11 or higher. For preset names: Mac + the extract tool above to create MidiTXPresets.json, then import in the app.</li>
     <li>IK Multimedia TONEX Pedal</li>
     <li>For wireless control: a BLE MIDI adapter (e.g. midiA m-vave) connected to the pedal’s MIDI port</li>
-    <li>For USB sync: an OTG cable and a phone that supports USB host</li>
   </ul>
 
   <h2>Privacy & data</h2>
@@ -61,7 +92,7 @@
   <p><a href="privacy_policy.html">Privacy policy</a></p>
 
   <div class="footer">
-    <p>Midi TX Editor is not officially affiliated with IK Multimedia. TONEX Pedal is a trademark of IK Multimedia.</p>
+    <p>MidiTX Editor is not officially affiliated with IK Multimedia. TONEX Pedal is a trademark of IK Multimedia.</p>
   </div>
 </body>
 </html>
